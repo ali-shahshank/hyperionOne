@@ -1,38 +1,527 @@
 import './globals.css';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Footer from '@/components/footer';
 import Nav from '@/components/Nav';
 
-const page = () => {
-  return (
-    <>
-      <Nav />
-      <Box sx={{ m: 0, p: 4, bgcolor: '#f7f7f7' }}>
-        <Typography
-          variant="h3"
-          sx={{ textAlign: 'center', fontWeight: '400' }}
-        >
-          The Ultimate AI{' '}
-          <Box
-            component="span"
-            sx={{ color: 'blue', fontWeight: '700' }}
-          >
-            Productivity Platform
-          </Box>{' '}
-        </Typography>
-        <Typography
-          variant="h4"
-          sx={{
-            textAlign: 'center',
-            fontWeight: '300',
-            color: 'text.secondary',
-          }}
-        >
-          Subheading Text
-        </Typography>
-      </Box>
-    </>
-  );
+const featureIcons = [
+  'https://www.figma.com/api/mcp/asset/5fe9ce55-69b1-481d-9088-fb91ee3fe3b3.svg',
+  'https://www.figma.com/api/mcp/asset/9df3f29c-c67f-4c50-b338-3a8438b02d30.svg',
+  'https://www.figma.com/api/mcp/asset/28953a29-ca9c-437a-a1ae-bca5f890f589.svg',
+  'https://www.figma.com/api/mcp/asset/f033c49c-5db0-4320-a106-7060d5945937.svg',
+  'https://www.figma.com/api/mcp/asset/1208f8d4-9332-435f-be2c-94dfd08ba568.svg',
+  'https://www.figma.com/api/mcp/asset/c5e3390b-4c3f-40b9-8767-cf5902103b57.svg',
+];
+
+const featureData = [
+  [
+    'Manage Documents',
+    'Compose accurate, on-brand documents',
+    'Store and manage documents',
+    'Summarize, edit and refine content',
+  ],
+  [
+    'Streamline your Inbox',
+    'Summarize emails in seconds',
+    'Gain valuable insight at a glance',
+    'Edit, delete and draft new responses',
+  ],
+  [
+    'Recap Meetings',
+    'Auto-summarize calls and live sessions.',
+    'Document key insights and decision.',
+    'Generate clear, shareable action items.',
+  ],
+  [
+    'Extract Insight',
+    'Extract data from Docs and Images',
+    'Restructure and organize data.',
+    'Seamlessly analyze and export data',
+  ],
+  [
+    'Automate Repetitive Tasks',
+    'Convert emails into action items',
+    'Turn meeting notes into task workflows',
+    'Eliminate time-consuming routines',
+  ],
+  [
+    'Connect Tools and Apps',
+    'Recap meetings from Zoom',
+    'Document key insights and decision',
+    'Export and store data in Google Suite',
+  ],
+];
+
+const useCases = [
+  [
+    'Project Management',
+    'From sprint planning to stakeholder updates — automate time-consuming tasks and keep every project on track.',
+  ],
+  [
+    'Research & Development',
+    'Accelerate research, simplify documentation, and turn complex findings into clear, actionable insights.',
+  ],
+  [
+    'Professional Services',
+    'Summarize contracts, compose client deliverables, automate reporting, and streamline client communication.',
+  ],
+];
+
+const buttonSx = {
+  borderRadius: '24px',
+  px: '22px',
+  py: '8px',
+  fontSize: '15px',
+  fontWeight: 500,
+  letterSpacing: '0.46px',
+  textTransform: 'uppercase',
 };
 
-export default page;
+function SectionHeading({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <Stack
+      spacing="12px"
+      sx={{ alignItems: 'center', textAlign: 'center', px: '24px' }}
+    >
+      <Typography sx={{ color: 'var(--text-disabled)', fontSize: '16px' }}>
+        {eyebrow}
+      </Typography>
+      <Typography
+        sx={{
+          fontSize: { xs: '32px', md: '40px' },
+          fontWeight: 500,
+          lineHeight: 1.2,
+        }}
+      >
+        {title}
+      </Typography>
+      <Typography
+        sx={{
+          color: 'var(--text-secondary)',
+          fontSize: { xs: '18px', md: '24px' },
+        }}
+      >
+        {description}
+      </Typography>
+    </Stack>
+  );
+}
+
+function FeatureCard({ feature, index }: { feature: string[]; index: number }) {
+  return (
+    <Box
+      sx={{
+        height: { xs: '291px', sm: '291px', md: '100%' },
+        p: '24px',
+        bgcolor: 'var(--background-primary)',
+        border: '1px solid var(--stroke-dark)',
+        borderRadius: '16px',
+        overflow: 'hidden',
+      }}
+    >
+      <Stack
+        spacing="64px"
+        sx={{ height: '100%' }}
+      >
+        <Box
+          component="img"
+          src={featureIcons[index]}
+          alt=""
+          sx={{ width: '64px', height: '64px' }}
+        />
+        <Stack spacing="24px">
+          <Typography sx={{ fontSize: '24px', fontWeight: 500 }}>
+            {feature[0]}
+          </Typography>
+          <Box
+            component="ul"
+            sx={{
+              m: 0,
+              pl: '27px',
+              color: 'var(--text-secondary)',
+              fontSize: '18px',
+            }}
+          >
+            {feature.slice(1).map((item) => (
+              <Box
+                component="li"
+                key={item}
+                sx={{ lineHeight: 'normal' }}
+              >
+                {item}
+              </Box>
+            ))}
+          </Box>
+        </Stack>
+      </Stack>
+    </Box>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Box sx={{ bgcolor: 'var(--white)', overflow: 'hidden' }}>
+      <Nav />
+      <Box component="main">
+        <Stack
+          spacing="24px"
+          sx={{
+            alignItems: 'center',
+            pt: { xs: '48px', md: '64px' },
+            pb: '24px',
+            px: '24px',
+            textAlign: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              px: '10px',
+              py: '4px',
+              border: '1px solid rgba(0,0,255,0.24)',
+              borderRadius: '24px',
+              bgcolor: 'rgba(0,0,255,0.06)',
+            }}
+          >
+            <Typography
+              sx={{
+                color: 'rgba(0,0,255,0.6)',
+                fontSize: '13px',
+                fontWeight: 500,
+                letterSpacing: '0.46px',
+                textTransform: 'uppercase',
+              }}
+            >
+              Inference native architecture
+            </Typography>
+          </Box>
+          <Stack
+            spacing="16px"
+            sx={{ alignItems: 'center' }}
+          >
+            <Typography
+              component="h1"
+              sx={{
+                maxWidth: { xs: '400px', sm: '600px', md: '1000px' },
+                fontSize: { xs: '32px', sm: '48px', md: '64px' },
+                fontWeight: 500,
+                lineHeight: 1.5,
+              }}
+            >
+              The Ultimate AI{' '}
+              <Box
+                component="span"
+                sx={{ color: 'var(--accent-primary)' }}
+              >
+                Productivity Platform
+              </Box>
+            </Typography>
+            <Typography
+              sx={{
+                maxWidth: { xs: '408px', sm: '600px', md: '860px' },
+                color: 'var(--text-secondary)',
+                fontSize: { xs: '16px', sm: '24px' },
+              }}
+            >
+              AI workspace built for professionals. One platform — endless
+              possibilities.
+            </Typography>
+          </Stack>
+          <Stack
+            direction="row"
+            spacing={{ xs: '10px', md: '16px' }}
+          >
+            <Button
+              href="/sign-up"
+              variant="contained"
+              sx={{
+                ...buttonSx,
+                fontSize: { xs: '11px', md: '15px' },
+                bgcolor: 'var(--background-secondary)',
+                '&:hover': {
+                  bgcolor: 'var(--background-secondary)',
+                  opacity: 0.7,
+                },
+              }}
+            >
+              Get started for free
+            </Button>
+            <Button
+              href="#features"
+              variant="outlined"
+              sx={{
+                ...buttonSx,
+                fontSize: { xs: '11px', md: '15px' },
+                color: 'var(--background-secondary)',
+                borderColor: 'var(--background-secondary)',
+              }}
+            >
+              See how it works
+            </Button>
+          </Stack>
+        </Stack>
+        <Box
+          sx={{
+            height: { xs: '220px', sm: '360px', md: '545px' },
+            px: { xs: '16px', sm: '16px', md: '24px' },
+            py: '24px',
+            background: 'var(--background-secondary)',
+          }}
+        >
+          <Box
+            sx={{
+              height: '100%',
+              bgcolor: 'var(--background-primary)',
+              border: '1px solid var(--stroke-dark)',
+              borderRadius: '16px',
+            }}
+          />
+        </Box>
+
+        <Stack
+          id="features"
+          spacing="24px"
+          sx={{
+            pt: { xs: '40px', sm: '48px', md: '64px' },
+            pb: { xs: '40px', sm: '48px', md: '64px' },
+          }}
+        >
+          <SectionHeading
+            eyebrow="FEATURES"
+            title="Supercharge Your Workflow"
+            description="Automate tasks — 10× faster with enterprise-grade AI"
+          />
+          <Grid
+            container
+            spacing="16px"
+            sx={{ px: { xs: '16px', sm: '16px', md: '24px' } }}
+          >
+            {featureData.map((feature, index) => (
+              <Grid
+                key={feature[0]}
+                size={{ xs: 12, sm: 6, md: 4 }}
+              >
+                <FeatureCard
+                  feature={feature}
+                  index={index}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Stack>
+
+        <Stack sx={{ pt: { xs: '40px', sm: '48px', md: '64px' } }}>
+          <SectionHeading
+            eyebrow="USE-CASES"
+            title="Real-world Applications"
+            description="Industry-agnostic productivity toolkit."
+          />
+          {useCases.map(([title, description], index) => (
+            <Box
+              key={title}
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                gap: { xs: '24px', sm: '24px', md: '48px' },
+                alignItems: 'center',
+                px: { xs: '16px', sm: '16px', md: '24px' },
+                py: '24px',
+                minHeight: { sm: '268px' },
+                bgcolor:
+                  index % 2 ? 'var(--background-primary)' : 'var(--white)',
+              }}
+            >
+              <Box
+                sx={{
+                  width: { xs: '100%', sm: '50%', md: '50%' },
+                  height: { xs: '220px', sm: '220px', md: '220px' },
+                  flexShrink: 0,
+                  bgcolor: 'var(--background-secondary)',
+                  borderRadius: '16px',
+                }}
+              />
+              <Stack spacing="24px">
+                <Typography
+                  sx={{ fontSize: { xs: '28px', md: '32px' }, fontWeight: 500 }}
+                >
+                  {title}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: 'var(--text-secondary)',
+                    fontSize: { xs: '16px', sm: '18px', md: '24px' },
+                  }}
+                >
+                  {description}
+                </Typography>
+              </Stack>
+            </Box>
+          ))}
+        </Stack>
+
+        <Box
+          sx={{ p: { xs: '24px 8px', sm: '48px 16px', md: '64px 24px 48px' } }}
+        >
+          <Box
+            sx={{
+              p: { xs: '8px', sm: '16px', md: '24px' },
+              bgcolor: 'black',
+              borderRadius: '16px',
+              color: 'var(--white)',
+            }}
+          >
+            <Stack
+              direction={{ xs: 'column', sm: 'column', md: 'row' }}
+              spacing={{ xs: '24px', md: '48px' }}
+              sx={{ alignItems: 'center' }}
+            >
+              <Box
+                sx={{
+                  flex: 1,
+                  width: '100%',
+                  height: { xs: '220px', sm: '260px', md: '400px' },
+                  bgcolor: 'var(--background-secondary)',
+                  border: '1px solid var(--stroke-light)',
+                  borderRadius: '16px',
+                }}
+              />
+              <Stack
+                spacing="24px"
+                sx={{ flex: 1 }}
+              >
+                <Typography
+                  sx={{
+                    color: 'var(--text-light-secondary)',
+                    fontSize: '16px',
+                  }}
+                >
+                  BENCHMARKS
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xs: '24px', sm: '32px', md: '40px' },
+                    fontWeight: 500,
+                  }}
+                >
+                  Built for performance and Scale
+                </Typography>
+                <Box
+                  component="ul"
+                  sx={{
+                    m: 0,
+                    pl: '24px',
+                    color: 'var(--text-light-secondary)',
+                    fontSize: { xs: '12px', sm: '16px', md: '18px' },
+                  }}
+                >
+                  {[
+                    '316 t/s throughput and 0.3s TTFT',
+                    '99.9% uptime with automatic model failover',
+                    '6 integrated AI models across a single platform',
+                    'Saves 3+ hrs a week per task',
+                    '10x faster than manual workflow processing',
+                    '86.0% accuracy — across NLP benchmarks',
+                  ].map((item) => (
+                    <Box
+                      component="li"
+                      key={item}
+                    >
+                      {item}
+                    </Box>
+                  ))}
+                </Box>
+              </Stack>
+            </Stack>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{ p: { xs: '24px 8px', sm: '48px 16px', md: '64px 24px 48px' } }}
+        >
+          <Box
+            sx={{
+              minHeight: { xs: '380px', sm: '480px', md: '600px' },
+              display: 'flex',
+              alignItems: 'flex-end',
+              bgcolor: 'var(--background-secondary)',
+              borderRadius: '16px',
+              overflow: 'hidden',
+            }}
+          >
+            <Stack
+              spacing="24px"
+              sx={{
+                width: '100%',
+                p: '24px 16px',
+                bgcolor: 'var(--black)',
+                color: 'var(--white)',
+              }}
+            >
+              <Typography
+                sx={{ color: 'var(--text-light-secondary)', fontSize: '16px' }}
+              >
+                Jan 10, 2026
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: { xs: '24px', sm: '32px', md: '40px' },
+                  fontWeight: 500,
+                }}
+              >
+                AI is reshaping the software industry
+              </Typography>
+              <Typography
+                sx={{
+                  color: 'var(--text-light-secondary)',
+                  fontSize: { xs: '14px', sm: '18px', md: '24px' },
+                }}
+              >
+                Exploring the shift from rigid enterprise platforms to adaptive,
+                AI-driven solutions and what it means for businesses still
+                relying on traditional ERP systems.
+              </Typography>
+              <Stack
+                direction="row"
+                spacing="8px"
+              >
+                <Button
+                  variant="outlined"
+                  sx={{
+                    ...buttonSx,
+                    fontSize: { xs: '11px', md: '15px' },
+                    color: 'var(--white)',
+                    borderColor: 'var(--white)',
+                  }}
+                >
+                  Read article
+                </Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    ...buttonSx,
+                    fontSize: { xs: '11px', md: '15px' },
+                    color: 'var(--black)',
+                    bgcolor: 'var(--white)',
+                  }}
+                >
+                  View blog
+                </Button>
+              </Stack>
+            </Stack>
+          </Box>
+        </Box>
+      </Box>
+      <Footer />
+    </Box>
+  );
+}
