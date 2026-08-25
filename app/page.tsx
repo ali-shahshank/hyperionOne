@@ -80,6 +80,7 @@ const buttonSx = {
   textTransform: 'uppercase',
 };
 
+// Section heading component
 function SectionHeading({
   eyebrow,
   title,
@@ -91,8 +92,10 @@ function SectionHeading({
 }) {
   return (
     <Stack
-      spacing="12px"
-      sx={{ alignItems: 'center', textAlign: 'center', px: '24px' }}
+      sx={{
+        alignItems: 'center',
+        textAlign: 'center',
+      }}
     >
       <Typography sx={{ color: 'var(--text-disabled)', fontSize: '16px' }}>
         {eyebrow}
@@ -100,7 +103,7 @@ function SectionHeading({
       <Typography
         sx={{
           fontSize: { xs: '32px', md: '40px' },
-          fontWeight: 500,
+          fontWeight: 400,
           lineHeight: 1.2,
         }}
       >
@@ -118,6 +121,7 @@ function SectionHeading({
   );
 }
 
+// Feature card component
 function FeatureCard({ feature, index }: { feature: string[]; index: number }) {
   return (
     <Box
@@ -169,6 +173,7 @@ function FeatureCard({ feature, index }: { feature: string[]; index: number }) {
   );
 }
 
+// Primary page component
 export default function HomePage() {
   return (
     <Box sx={{ bgcolor: 'var(--white)', overflow: 'hidden' }}>
@@ -196,7 +201,7 @@ export default function HomePage() {
             <Typography
               sx={{
                 color: 'rgba(0,0,255,0.6)',
-                fontSize: '13px',
+                fontSize: '12px',
                 fontWeight: 500,
                 letterSpacing: '0.46px',
                 textTransform: 'uppercase',
@@ -212,10 +217,8 @@ export default function HomePage() {
             <Typography
               component="h1"
               sx={{
-                maxWidth: { xs: '400px', sm: '600px', md: '1000px' },
-                fontSize: { xs: '32px', sm: '48px', md: '64px' },
-                fontWeight: 500,
-                lineHeight: 1.5,
+                fontSize: { xs: '32px', sm: '40px', md: '48px' },
+                fontWeight: 400,
               }}
             >
               The Ultimate AI{' '}
@@ -228,9 +231,8 @@ export default function HomePage() {
             </Typography>
             <Typography
               sx={{
-                maxWidth: { xs: '408px', sm: '600px', md: '860px' },
                 color: 'var(--text-secondary)',
-                fontSize: { xs: '16px', sm: '24px' },
+                fontSize: { xs: '16px', sm: '20px', md: '24px' },
               }}
             >
               AI workspace built for professionals. One platform — endless
@@ -246,7 +248,7 @@ export default function HomePage() {
               variant="contained"
               sx={{
                 ...buttonSx,
-                fontSize: { xs: '11px', md: '15px' },
+                fontSize: { xs: '12px', md: '15px' },
                 bgcolor: 'var(--background-secondary)',
                 '&:hover': {
                   bgcolor: 'var(--background-secondary)',
@@ -261,7 +263,7 @@ export default function HomePage() {
               variant="outlined"
               sx={{
                 ...buttonSx,
-                fontSize: { xs: '11px', md: '15px' },
+                fontSize: { xs: '12px', md: '15px' },
                 color: 'var(--background-secondary)',
                 borderColor: 'var(--background-secondary)',
               }}
@@ -270,18 +272,19 @@ export default function HomePage() {
             </Button>
           </Stack>
         </Stack>
+
+        {/* Video placeholder */}
         <Box
           sx={{
-            height: { xs: '220px', sm: '360px', md: '545px' },
+            height: { xs: '220px', sm: '360px', md: '460px' },
             px: { xs: '16px', sm: '16px', md: '24px' },
             py: '24px',
-            background: 'var(--background-secondary)',
           }}
         >
           <Box
             sx={{
               height: '100%',
-              bgcolor: 'var(--background-primary)',
+              bgcolor: 'var(--background-secondary)',
               border: '1px solid var(--stroke-dark)',
               borderRadius: '16px',
             }}

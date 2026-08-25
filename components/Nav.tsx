@@ -17,13 +17,14 @@ import AppDrawer from './drawer';
 export interface Page {
   title: string;
   Icon: React.ElementType;
+  link: string;
 }
 
 const pages: Page[] = [
-  { title: 'Product', Icon: AutoAwesomeIcon },
-  { title: 'Blog', Icon: ArticleIcon },
-  { title: 'Resources', Icon: LibraryBooksIcon },
-  { title: 'Pricing', Icon: CheckCircleIcon },
+  { title: 'Product', Icon: AutoAwesomeIcon, link: '/product' },
+  { title: 'Blog', Icon: ArticleIcon, link: '/blog' },
+  { title: 'Resources', Icon: LibraryBooksIcon, link: '/resources' },
+  { title: 'Pricing', Icon: CheckCircleIcon, link: '/pricing' },
 ];
 
 export default function ResponsiveAppBar() {
@@ -33,10 +34,10 @@ export default function ResponsiveAppBar() {
     <AppBar
       position="static"
       sx={{
-        bgcolor: 'transparent',
         boxShadow: 'none',
         p: 0,
         m: 0,
+        bgcolor: 'transparent',
       }}
     >
       <Container
@@ -49,8 +50,7 @@ export default function ResponsiveAppBar() {
             display: 'flex',
             justifyContent: 'space-between',
             m: 0,
-            p: 0,
-            // backgroundColor: 'orange',
+            p: { xs: '16px', sm: '0px', md: '0px' },
           }}
         >
           {/* Logo */}
@@ -75,6 +75,7 @@ export default function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page.title}
+                href={page.link}
                 sx={{
                   fontSize: '16px',
                   textTransform: 'none',
