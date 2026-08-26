@@ -31,7 +31,7 @@ export default function AppDrawer({ open, onClose, pages }: AppDrawerProps) {
       <Box
         sx={{
           width: 250,
-          height: '100%', // FIX: typo
+          height: '100%',
           display: 'flex',
           flexDirection: 'column',
         }}
@@ -48,7 +48,7 @@ export default function AppDrawer({ open, onClose, pages }: AppDrawerProps) {
             >
               <ListItemButton href={link}>
                 <ListItemIcon sx={{ minWidth: 36 }}>
-                  <Icon /> {/* FIX: Render as component */}
+                  <Icon />
                 </ListItemIcon>
                 <ListItemText primary={title} />
               </ListItemButton>

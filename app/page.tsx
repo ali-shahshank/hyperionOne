@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Footer from '@/app/components/footer';
+import Chip from '@mui/material/Chip';
 import Nav from '@/app/components/Nav';
 
 const featureIcons = [
@@ -97,14 +98,20 @@ function SectionHeading({
         textAlign: 'center',
       }}
     >
-      <Typography sx={{ color: 'var(--text-disabled)', fontSize: '16px' }}>
+      <Typography
+        sx={{
+          color: 'var(--text-disabled)',
+          fontSize: '16px',
+          textTransform: 'uppercase',
+          letterSpacing: '0.46px',
+        }}
+      >
         {eyebrow}
       </Typography>
       <Typography
         sx={{
-          fontSize: { xs: '32px', md: '40px' },
+          fontSize: { xs: '28px', md: '32px' },
           fontWeight: 400,
-          lineHeight: 1.2,
         }}
       >
         {title}
@@ -112,7 +119,7 @@ function SectionHeading({
       <Typography
         sx={{
           color: 'var(--text-secondary)',
-          fontSize: { xs: '18px', md: '24px' },
+          fontSize: { xs: '16px', md: '20px' },
         }}
       >
         {description}
@@ -176,43 +183,52 @@ function FeatureCard({ feature, index }: { feature: string[]; index: number }) {
 // Primary page component
 export default function HomePage() {
   return (
-    <Box sx={{ bgcolor: 'var(--white)', overflow: 'hidden' }}>
+    <Box
+      component="main"
+      sx={{ overflow: 'hidden' }}
+    >
       <Nav />
-      <Box component="main">
+      <Box
+        component="section"
+        sx={{
+          bgcolor: '#f7f7f7',
+          pt: { xs: '48px', md: '64px' },
+          px: { xs: '16px', sm: '16px', md: '24px' },
+          pb: { xs: '24px', sm: '24px', md: '24px' },
+        }}
+      >
         <Stack
-          spacing="24px"
+          spacing={3}
           sx={{
-            alignItems: 'center',
-            pt: { xs: '48px', md: '64px' },
-            pb: '24px',
-            px: '24px',
             textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            pb: '24px',
           }}
         >
-          <Box
+          <Chip
+            label="Inference native architecture"
+            variant="outlined"
             sx={{
-              px: '10px',
-              py: '4px',
-              border: '1px solid rgba(0,0,255,0.24)',
-              borderRadius: '24px',
+              textTransform: 'uppercase',
+              fontSize: '12px',
+              fontWeight: 400,
+              letterSpacing: '0.46px',
+              color: 'rgba(0,0,255,0.6)',
+              borderColor: 'rgba(0,0,255,0.24)',
               bgcolor: 'rgba(0,0,255,0.06)',
+              borderRadius: '24px',
             }}
-          >
-            <Typography
-              sx={{
-                color: 'rgba(0,0,255,0.6)',
-                fontSize: '12px',
-                fontWeight: 500,
-                letterSpacing: '0.46px',
-                textTransform: 'uppercase',
-              }}
-            >
-              Inference native architecture
-            </Typography>
-          </Box>
+          />
+
           <Stack
-            spacing="16px"
-            sx={{ alignItems: 'center' }}
+            sx={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
           >
             <Typography
               component="h1"
@@ -221,12 +237,12 @@ export default function HomePage() {
                 fontWeight: 400,
               }}
             >
-              The Ultimate AI{' '}
+              The Ultimate{' '}
               <Box
                 component="span"
                 sx={{ color: 'var(--accent-primary)' }}
               >
-                Productivity Platform
+                AI Productivity Platform
               </Box>
             </Typography>
             <Typography
@@ -239,36 +255,41 @@ export default function HomePage() {
               possibilities.
             </Typography>
           </Stack>
+
           <Stack
             direction="row"
-            spacing={{ xs: '10px', md: '16px' }}
+            spacing={'12px'}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+            }}
           >
             <Button
-              href="/sign-up"
+              href="sign-up"
               variant="contained"
               sx={{
                 ...buttonSx,
-                fontSize: { xs: '12px', md: '15px' },
                 bgcolor: 'var(--background-secondary)',
                 '&:hover': {
                   bgcolor: 'var(--background-secondary)',
-                  opacity: 0.7,
+                  opacity: '0.9',
                 },
               }}
             >
-              Get started for free
+              GET STARTED
             </Button>
             <Button
-              href="#features"
+              href="/product"
               variant="outlined"
               sx={{
                 ...buttonSx,
-                fontSize: { xs: '12px', md: '15px' },
                 color: 'var(--background-secondary)',
                 borderColor: 'var(--background-secondary)',
               }}
             >
-              See how it works
+              LEARN MORE
             </Button>
           </Stack>
         </Stack>
@@ -277,203 +298,142 @@ export default function HomePage() {
         <Box
           sx={{
             height: { xs: '220px', sm: '360px', md: '460px' },
-            px: { xs: '16px', sm: '16px', md: '24px' },
-            py: '24px',
           }}
         >
           <Box
             sx={{
               height: '100%',
+              width: '100%',
               bgcolor: 'var(--background-secondary)',
               border: '1px solid var(--stroke-dark)',
               borderRadius: '16px',
             }}
           />
         </Box>
+      </Box>
 
-        <Stack
-          id="features"
-          spacing="24px"
-          sx={{
-            pt: { xs: '40px', sm: '48px', md: '64px' },
-            pb: { xs: '40px', sm: '48px', md: '64px' },
-          }}
-        >
+      {/* Features Section */}
+      <Box
+        component="section"
+        id="features"
+        sx={{
+          bgcolor: 'green',
+          px: { xs: '16px', sm: '16px', md: '24px' },
+          py: { xs: '24px', sm: '48px', md: '64px' },
+          width: '100%',
+        }}
+      >
+        <Stack sx={{ bgcolor: 'orange', pb: '24px' }}>
           <SectionHeading
             eyebrow="FEATURES"
             title="Supercharge Your Workflow"
             description="Automate tasks — 10× faster with enterprise-grade AI"
           />
-          <Grid
-            container
-            spacing="16px"
-            sx={{ px: { xs: '16px', sm: '16px', md: '24px' } }}
-          >
-            {featureData.map((feature, index) => (
-              <Grid
-                key={feature[0]}
-                size={{ xs: 12, sm: 6, md: 4 }}
-              >
-                <FeatureCard
-                  feature={feature}
-                  index={index}
-                />
-              </Grid>
-            ))}
-          </Grid>
         </Stack>
+        <Grid
+          container
+          spacing="16px"
+          sx={{ px: { xs: '16px', sm: '16px', md: '24px' } }}
+        >
+          {featureData.map((feature, index) => (
+            <Grid
+              key={feature[0]}
+              size={{ xs: 12, sm: 6, md: 4 }}
+            >
+              <FeatureCard
+                feature={feature}
+                index={index}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
 
-        <Stack sx={{ pt: { xs: '40px', sm: '48px', md: '64px' } }}>
-          <SectionHeading
+      <Stack sx={{ pt: { xs: '40px', sm: '48px', md: '64px' } }}>
+        {/* <SectionHeading
             eyebrow="USE-CASES"
             title="Real-world Applications"
             description="Industry-agnostic productivity toolkit."
-          />
-          {useCases.map(([title, description], index) => (
-            <Box
-              key={title}
-              sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', sm: 'row' },
-                gap: { xs: '24px', sm: '24px', md: '48px' },
-                alignItems: 'center',
-                px: { xs: '16px', sm: '16px', md: '24px' },
-                py: '24px',
-                minHeight: { sm: '268px' },
-                bgcolor:
-                  index % 2 ? 'var(--background-primary)' : 'var(--white)',
-              }}
-            >
-              <Box
-                sx={{
-                  width: { xs: '100%', sm: '50%', md: '50%' },
-                  height: { xs: '220px', sm: '220px', md: '220px' },
-                  flexShrink: 0,
-                  bgcolor: 'var(--background-secondary)',
-                  borderRadius: '16px',
-                }}
-              />
-              <Stack spacing="24px">
-                <Typography
-                  sx={{ fontSize: { xs: '28px', md: '32px' }, fontWeight: 500 }}
-                >
-                  {title}
-                </Typography>
-                <Typography
-                  sx={{
-                    color: 'var(--text-secondary)',
-                    fontSize: { xs: '16px', sm: '18px', md: '24px' },
-                  }}
-                >
-                  {description}
-                </Typography>
-              </Stack>
-            </Box>
-          ))}
-        </Stack>
-
-        <Box
-          sx={{ p: { xs: '24px 8px', sm: '48px 16px', md: '64px 24px 48px' } }}
-        >
+          /> */}
+        {useCases.map(([title, description], index) => (
           <Box
+            key={title}
             sx={{
-              p: { xs: '8px', sm: '16px', md: '24px' },
-              bgcolor: 'black',
-              borderRadius: '16px',
-              color: 'var(--white)',
+              display: 'flex',
+              flexDirection: { xs: 'column', sm: 'row' },
+              gap: { xs: '24px', sm: '24px', md: '48px' },
+              alignItems: 'center',
+              px: { xs: '16px', sm: '16px', md: '24px' },
+              py: '24px',
+              minHeight: { sm: '268px' },
+              bgcolor: index % 2 ? 'var(--background-primary)' : 'var(--white)',
             }}
           >
-            <Stack
-              direction={{ xs: 'column', sm: 'column', md: 'row' }}
-              spacing={{ xs: '24px', md: '48px' }}
-              sx={{ alignItems: 'center' }}
-            >
-              <Box
-                sx={{
-                  flex: 1,
-                  width: '100%',
-                  height: { xs: '220px', sm: '260px', md: '400px' },
-                  bgcolor: 'var(--background-secondary)',
-                  border: '1px solid var(--stroke-light)',
-                  borderRadius: '16px',
-                }}
-              />
-              <Stack
-                spacing="24px"
-                sx={{ flex: 1 }}
+            <Box
+              sx={{
+                width: { xs: '100%', sm: '50%', md: '50%' },
+                height: { xs: '220px', sm: '220px', md: '220px' },
+                flexShrink: 0,
+                bgcolor: 'var(--background-secondary)',
+                borderRadius: '16px',
+              }}
+            />
+            <Stack spacing="24px">
+              <Typography
+                sx={{ fontSize: { xs: '28px', md: '32px' }, fontWeight: 500 }}
               >
-                <Typography
-                  sx={{
-                    color: 'var(--text-light-secondary)',
-                    fontSize: '16px',
-                  }}
-                >
-                  BENCHMARKS
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: { xs: '24px', sm: '32px', md: '40px' },
-                    fontWeight: 500,
-                  }}
-                >
-                  Built for performance and Scale
-                </Typography>
-                <Box
-                  component="ul"
-                  sx={{
-                    m: 0,
-                    pl: '24px',
-                    color: 'var(--text-light-secondary)',
-                    fontSize: { xs: '12px', sm: '16px', md: '18px' },
-                  }}
-                >
-                  {[
-                    '316 t/s throughput and 0.3s TTFT',
-                    '99.9% uptime with automatic model failover',
-                    '6 integrated AI models across a single platform',
-                    'Saves 3+ hrs a week per task',
-                    '10x faster than manual workflow processing',
-                    '86.0% accuracy — across NLP benchmarks',
-                  ].map((item) => (
-                    <Box
-                      component="li"
-                      key={item}
-                    >
-                      {item}
-                    </Box>
-                  ))}
-                </Box>
-              </Stack>
+                {title}
+              </Typography>
+              <Typography
+                sx={{
+                  color: 'var(--text-secondary)',
+                  fontSize: { xs: '16px', sm: '18px', md: '24px' },
+                }}
+              >
+                {description}
+              </Typography>
             </Stack>
           </Box>
-        </Box>
+        ))}
+      </Stack>
 
+      <Box
+        sx={{ p: { xs: '24px 8px', sm: '48px 16px', md: '64px 24px 48px' } }}
+      >
         <Box
-          sx={{ p: { xs: '24px 8px', sm: '48px 16px', md: '64px 24px 48px' } }}
+          sx={{
+            p: { xs: '8px', sm: '16px', md: '24px' },
+            bgcolor: 'black',
+            borderRadius: '16px',
+            color: 'var(--white)',
+          }}
         >
-          <Box
-            sx={{
-              minHeight: { xs: '380px', sm: '480px', md: '600px' },
-              display: 'flex',
-              alignItems: 'flex-end',
-              bgcolor: 'var(--background-secondary)',
-              borderRadius: '16px',
-              overflow: 'hidden',
-            }}
+          <Stack
+            direction={{ xs: 'column', sm: 'column', md: 'row' }}
+            spacing={{ xs: '24px', md: '48px' }}
+            sx={{ alignItems: 'center' }}
           >
+            <Box
+              sx={{
+                flex: 1,
+                width: '100%',
+                height: { xs: '220px', sm: '260px', md: '400px' },
+                bgcolor: 'var(--background-secondary)',
+                border: '1px solid var(--stroke-light)',
+                borderRadius: '16px',
+              }}
+            />
             <Stack
               spacing="24px"
-              sx={{
-                width: '100%',
-                p: '24px 16px',
-                bgcolor: 'var(--black)',
-                color: 'var(--white)',
-              }}
+              sx={{ flex: 1 }}
             >
               <Typography
-                sx={{ color: 'var(--text-light-secondary)', fontSize: '16px' }}
+                sx={{
+                  color: 'var(--text-light-secondary)',
+                  fontSize: '16px',
+                }}
               >
-                Jan 10, 2026
+                BENCHMARKS
               </Typography>
               <Typography
                 sx={{
@@ -481,47 +441,111 @@ export default function HomePage() {
                   fontWeight: 500,
                 }}
               >
-                AI is reshaping the software industry
+                Built for performance and Scale
               </Typography>
-              <Typography
+              <Box
+                component="ul"
                 sx={{
+                  m: 0,
+                  pl: '24px',
                   color: 'var(--text-light-secondary)',
-                  fontSize: { xs: '14px', sm: '18px', md: '24px' },
+                  fontSize: { xs: '12px', sm: '16px', md: '18px' },
                 }}
               >
-                Exploring the shift from rigid enterprise platforms to adaptive,
-                AI-driven solutions and what it means for businesses still
-                relying on traditional ERP systems.
-              </Typography>
-              <Stack
-                direction="row"
-                spacing="8px"
-              >
-                <Button
-                  variant="outlined"
-                  sx={{
-                    ...buttonSx,
-                    fontSize: { xs: '11px', md: '15px' },
-                    color: 'var(--white)',
-                    borderColor: 'var(--white)',
-                  }}
-                >
-                  Read article
-                </Button>
-                <Button
-                  variant="contained"
-                  sx={{
-                    ...buttonSx,
-                    fontSize: { xs: '11px', md: '15px' },
-                    color: 'var(--black)',
-                    bgcolor: 'var(--white)',
-                  }}
-                >
-                  View blog
-                </Button>
-              </Stack>
+                {[
+                  '316 t/s throughput and 0.3s TTFT',
+                  '99.9% uptime with automatic model failover',
+                  '6 integrated AI models across a single platform',
+                  'Saves 3+ hrs a week per task',
+                  '10x faster than manual workflow processing',
+                  '86.0% accuracy — across NLP benchmarks',
+                ].map((item) => (
+                  <Box
+                    component="li"
+                    key={item}
+                  >
+                    {item}
+                  </Box>
+                ))}
+              </Box>
             </Stack>
-          </Box>
+          </Stack>
+        </Box>
+      </Box>
+
+      <Box
+        sx={{ p: { xs: '24px 8px', sm: '48px 16px', md: '64px 24px 48px' } }}
+      >
+        <Box
+          sx={{
+            minHeight: { xs: '380px', sm: '480px', md: '600px' },
+            display: 'flex',
+            alignItems: 'flex-end',
+            bgcolor: 'var(--background-secondary)',
+            borderRadius: '16px',
+            overflow: 'hidden',
+          }}
+        >
+          <Stack
+            spacing="24px"
+            sx={{
+              width: '100%',
+              p: '24px 16px',
+              bgcolor: 'var(--black)',
+              color: 'var(--white)',
+            }}
+          >
+            <Typography
+              sx={{ color: 'var(--text-light-secondary)', fontSize: '16px' }}
+            >
+              Jan 10, 2026
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: { xs: '24px', sm: '32px', md: '40px' },
+                fontWeight: 500,
+              }}
+            >
+              AI is reshaping the software industry
+            </Typography>
+            <Typography
+              sx={{
+                color: 'var(--text-light-secondary)',
+                fontSize: { xs: '14px', sm: '18px', md: '24px' },
+              }}
+            >
+              Exploring the shift from rigid enterprise platforms to adaptive,
+              AI-driven solutions and what it means for businesses still relying
+              on traditional ERP systems.
+            </Typography>
+            <Stack
+              direction="row"
+              spacing="8px"
+            >
+              <Button
+                variant="outlined"
+                sx={{
+                  ...buttonSx,
+                  fontSize: { xs: '11px', md: '15px' },
+                  color: 'var(--white)',
+                  borderColor: 'var(--white)',
+                }}
+              >
+                Read article
+              </Button>
+              <Button
+                variant="contained"
+                sx={{
+                  ...buttonSx,
+                  fontSize: { xs: '11px', md: '15px' },
+                  color: 'var(--black)',
+                  bgcolor: 'var(--white)',
+                }}
+              >
+                View blog
+              </Button>
+            </Stack>
+          </Stack>
         </Box>
       </Box>
       <Footer />
