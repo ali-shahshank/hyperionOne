@@ -191,7 +191,6 @@ export default function HomePage() {
       <Box
         component="section"
         sx={{
-          bgcolor: '#f7f7f7',
           pt: { xs: '48px', md: '64px' },
           px: { xs: '16px', sm: '16px', md: '24px' },
           pb: { xs: '24px', sm: '24px', md: '24px' },
