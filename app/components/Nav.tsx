@@ -102,6 +102,7 @@ export default function ResponsiveAppBar() {
           >
             <Button
               variant="text"
+              href="/sign-in"
               sx={{
                 color: 'black',
                 borderRadius: 6,
@@ -111,6 +112,7 @@ export default function ResponsiveAppBar() {
               Sign In
             </Button>
             <Button
+              href="/sign-up"
               variant="outlined"
               sx={{
                 color: 'black',

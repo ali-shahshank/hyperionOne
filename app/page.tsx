@@ -4,8 +4,8 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Footer from '@/components/footer';
-import Nav from '@/components/Nav';
+import Footer from '@/app/components/footer';
+import Nav from '@/app/components/Nav';
 
 const featureIcons = [
   'https://www.figma.com/api/mcp/asset/5fe9ce55-69b1-481d-9088-fb91ee3fe3b3.svg',

@@ -41,12 +41,12 @@ export default function AppDrawer({ open, onClose, pages }: AppDrawerProps) {
       >
         {/* Nav Links */}
         <List sx={{ flexGrow: 1 }}>
-          {pages.map(({ title, Icon }) => (
+          {pages.map(({ title, Icon, link }) => (
             <ListItem
               key={title}
               disablePadding
             >
-              <ListItemButton>
+              <ListItemButton href={link}>
                 <ListItemIcon sx={{ minWidth: 36 }}>
                   <Icon /> {/* FIX: Render as component */}
                 </ListItemIcon>
@@ -61,6 +61,7 @@ export default function AppDrawer({ open, onClose, pages }: AppDrawerProps) {
         {/* Auth Buttons — FIX: moved inside flex parent */}
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, p: 2 }}>
           <Button
+            href="/sign-in"
             variant="text"
             fullWidth
             sx={{
@@ -72,6 +73,7 @@ export default function AppDrawer({ open, onClose, pages }: AppDrawerProps) {
             Sign In
           </Button>
           <Button
+            href="sign-up"
             variant="outlined"
             fullWidth
             sx={{
