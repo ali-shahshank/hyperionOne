@@ -328,7 +328,6 @@ export default function HomePage() {
         <Grid
           container
           spacing="8px"
-          // sx={{ px: { xs: '16px', sm: '16px', md: '24px' } }}
         >
           {featureData.map((feature, index) => (
             <Grid
@@ -344,12 +343,73 @@ export default function HomePage() {
         </Grid>
       </Box>
 
-      <Stack sx={{ pt: { xs: '40px', sm: '48px', md: '64px' } }}>
-        {/* <SectionHeading
+      {/* Use Cases Section */}
+      <Box
+        sx={{
+          px: { xs: '16px', sm: '16px', md: '64px' },
+          py: { xs: '24px', sm: '48px', md: '64px' },
+          width: '100%',
+        }}
+      >
+        <Stack sx={{ pb: '48px' }}>
+          <SectionHeading
             eyebrow="USE-CASES"
             title="Real-world Applications"
             description="Industry-agnostic productivity toolkit."
-          /> */}
+          />
+        </Stack>
+        <Stack>
+          {useCases.map(([title, description], index) => (
+            <Box
+              key={title}
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                gap: { xs: '24px', sm: '24px', md: '48px' },
+                pb: { xs: '24px', sm: '24px', md: '0px' },
+                alignItems: 'center',
+                minHeight: { sm: '268px' },
+                bgcolor:
+                  index % 2 ? 'var(--background-primary)' : 'var(--white)',
+              }}
+            >
+              <Box
+                sx={{
+                  width: { xs: '100%', sm: '40%', md: '40%' },
+                  height: { xs: '220px', sm: '220px', md: '220px' },
+                  flexShrink: 0,
+                  bgcolor: 'var(--background-secondary)',
+                  borderRadius: '16px',
+                }}
+              />
+              <Stack spacing="24px">
+                <Typography
+                  sx={{ fontSize: { xs: '24px', md: '24px' }, fontWeight: 400 }}
+                >
+                  {title}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: 'var(--text-secondary)',
+                    fontSize: { xs: '16px', sm: '16px', md: '16px' },
+                  }}
+                >
+                  {description}
+                </Typography>
+              </Stack>
+            </Box>
+          ))}
+        </Stack>
+      </Box>
+
+      {/* <Stack
+        sx={{
+          px: { xs: '16px', sm: '16px', md: '64px' },
+          py: { xs: '24px', sm: '48px', md: '64px' },
+          width: '100%',
+          bgcolor: 'orange',
+        }}
+      >
         {useCases.map(([title, description], index) => (
           <Box
             key={title}
@@ -390,7 +450,7 @@ export default function HomePage() {
             </Stack>
           </Box>
         ))}
-      </Stack>
+      </Stack> */}
 
       <Box
         sx={{ p: { xs: '24px 8px', sm: '48px 16px', md: '64px 24px 48px' } }}
@@ -418,6 +478,7 @@ export default function HomePage() {
                 borderRadius: '16px',
               }}
             />
+
             <Stack
               spacing="24px"
               sx={{ flex: 1 }}
