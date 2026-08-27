@@ -22,7 +22,7 @@ import { useState, useTransition } from 'react';
 import { signInWithEmail, signInWithGoogle } from './actions';
 import Alert from '@mui/material/Alert';
 
-const page = () => {
+export default function Page() {
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
 
@@ -274,6 +274,4 @@ const page = () => {
       </Box>
     </>
   );
-};
-
-export default page;
+}
