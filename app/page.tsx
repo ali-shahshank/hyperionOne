@@ -133,35 +133,33 @@ function FeatureCard({ feature, index }: { feature: string[]; index: number }) {
   return (
     <Box
       sx={{
-        height: { xs: '291px', sm: '291px', md: '100%' },
+        height: { xs: 'auto', sm: 'auto', md: '100%' },
         p: '24px',
         bgcolor: 'var(--background-primary)',
         border: '1px solid var(--stroke-dark)',
         borderRadius: '16px',
-        overflow: 'hidden',
       }}
     >
       <Stack
-        spacing="64px"
+        spacing="24px"
         sx={{ height: '100%' }}
       >
         <Box
           component="img"
           src={featureIcons[index]}
           alt=""
-          sx={{ width: '64px', height: '64px' }}
+          sx={{ width: '48px', height: '48px' }}
         />
-        <Stack spacing="24px">
-          <Typography sx={{ fontSize: '24px', fontWeight: 500 }}>
+        <Stack spacing="16px">
+          <Typography sx={{ fontSize: '20px', fontWeight: 400 }}>
             {feature[0]}
           </Typography>
           <Box
-            component="ul"
+            component="ol"
             sx={{
               m: 0,
-              pl: '27px',
               color: 'var(--text-secondary)',
-              fontSize: '18px',
+              fontSize: '16px',
             }}
           >
             {feature.slice(1).map((item) => (
@@ -293,7 +291,6 @@ export default function HomePage() {
           </Stack>
         </Stack>
 
-        {/* Video placeholder */}
         <Box
           sx={{
             height: { xs: '220px', sm: '360px', md: '460px' },
@@ -316,13 +313,12 @@ export default function HomePage() {
         component="section"
         id="features"
         sx={{
-          bgcolor: 'green',
-          px: { xs: '16px', sm: '16px', md: '24px' },
+          px: { xs: '16px', sm: '16px', md: '64px' },
           py: { xs: '24px', sm: '48px', md: '64px' },
           width: '100%',
         }}
       >
-        <Stack sx={{ bgcolor: 'orange', pb: '24px' }}>
+        <Stack sx={{ pb: '48px' }}>
           <SectionHeading
             eyebrow="FEATURES"
             title="Supercharge Your Workflow"
@@ -331,8 +327,8 @@ export default function HomePage() {
         </Stack>
         <Grid
           container
-          spacing="16px"
-          sx={{ px: { xs: '16px', sm: '16px', md: '24px' } }}
+          spacing="8px"
+          // sx={{ px: { xs: '16px', sm: '16px', md: '24px' } }}
         >
           {featureData.map((feature, index) => (
             <Grid
